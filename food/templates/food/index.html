@@ -1,12 +1,51 @@
-{% for item in item_list %}
+{% extends 'food/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Document</title>
+    <!-- <style>
+        .row {
+            padding-top: 5cm;
+        }
+    </style> -->
+</head>
+
+<body>
+    {% block body %}
+    {% for item in item_list %}
+    <br>
+    <div class="row">
+        <div class="col-md-3 offset-md-2">
+            <img class="card" width="150px" height=150px src="{{ item.item_img}}">
+        </div>
+        <div class="col-md-4">
+            <h3>{{ item.item_name }}</h3>
+            <!-- <h5>{{ item.item_description }}</h5> -->
+            <h6>${{ item.item_price }}</h6>
+
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-success" style="padding: 3px;">Details</a>
+            <a href="{% url 'food:update_item' item.id %}" class="btn btn-success" style="padding: 3px;">Update</a>
+
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+
+    <!-- <ul>
+        <li> -->
+    <!-- {{ item.id }} -- {{ item.item_name }} -->
+    <!-- <a href="/food/{{ item.id }}">{{ item.id }} -- {{ item.item_name }}</a>-->
+    <!-- <a href="{% url 'food:detail' item.id %}">{{ item.item_name }}</a>
+        </li>
+    </ul> -->
 
 
-<ul>
-    <li>
-        <!-- {{ item.id }} -- {{ item.item_name }} -->
-        <!-- <a href="/food/{{ item.id }}">{{ item.id }} -- {{ item.item_name }}</a>-->
-        <a href="{% url 'detail' item.id %}">{{ item.id }} -- {{ item.item_name }}</a>
-    </li>
-</ul>
+</body>
 
-{% endfor %}
+</html>
