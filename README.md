@@ -1,2 +1,2 @@
 # food-menu-app
-Food ordering system
+Food menu creation system
